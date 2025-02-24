@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-1</title>
+
+    <!-- Bootstrap cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Quill CSS -->
+    <link href="https://cdn.quilljs.com/1.3.6/quill.snow.css" rel="stylesheet">
+
+    <!-- Quill JS -->
+    <script src="https://cdn.quilljs.com/1.3.6/quill.min.js"></script>
+
+    <!-- connected files  -->
+    <script src="./assets/styles/index.js"></script>
+    <link rel="stylesheet" href="./assets/styles/index.css">
+
+    <!-- font awesome CDN  -->
+    <script src="https://kit.fontawesome.com/YOUR_FA_KIT.js" crossorigin="anonymous"></script>
+
+    <!-- internal css  -->
+    <style>
+        /* Card Styling */
+        .card {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Profile Image */
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* Buttons Container */
+        .d-flex {
+            display: flex;
+            gap: 10px;
+        }
+
+        /* Make Buttons Full Width on Small Screens */
+        @media (max-width: 768px) {
+            .d-flex {
+                flex-direction: column;
+                align-items: stretch;
+            }
+
+            .d-flex .btn {
+                width: 100%;
+            }
+        }
+
+        /* Adjust Profile Image on Small Screens */
+        @media (max-width: 576px) {
+            .col-md-2 {
+                text-align: center;
+                margin-bottom: 15px;
+            }
+
+            .profile-img {
+                width: 80px;
+                height: 80px;
+            }
+        }
+
+        /* Ensure Form Inputs Take Full Width on Small Screens */
+        @media (max-width: 576px) {
+
+            .col-md-6,
+            .col-md-12 {
+                width: 100%;
+            }
+        }
+
+        #editor-container {
+            height: 100px;
+            /* Adjust height */
+            max-width: 100%;
+            /* Limit width */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 14px;
+            /* Make text smaller */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Container -->
+    <div class="container-fluid">
+
+        <!-- Sidebar -->
+        <div class="sidebar mt-5" id="sidebar">
+            <button class="btn btn-danger d-md-none close-btn" id="closeSidebar">✖</button>
+            <a href="#" class="active"><i class="fas fa-th-large"></i> Dashboard</a>
+
+            <!-- Team Members with Dropdown -->
+            <a href="#" class="toggle-submenu"><i class="fas fa-users"></i> Team Members
+                <i class="fa fa-chevron-down ms-auto"></i>
+            </a>
+            <div class="submenu">
+                <a href="#"><i class="fas fa-user"></i> Team Member</a>
+                <a href="#"><i class="fas fa-certificate"></i> Certification</a>
+            </div>
+
+            <a href="#"><i class="fas"></i> Projects</a>
+            <a href="#"><i class="fas fa-user-tie"></i> Clients</a>
+            <a href="#"><i class="fas fa-graduation-cap"></i> Learning Paths</a>
+        </div>
+        <!-- Toggle Button -->
+        <button id="openSidebar" class="btn btn-primary d-md-none">☰ Menu</button>
+        <!-- Main Content -->
+        <div class="col-md-9 col-lg-10 offset-md-3 offset-lg-2 midia">
+
+            <!-- Navbar -->
+            <div class="navbar m">
+                <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom p-5">
+                    <div class="container-fluid">
+                        <!-- Navbar toggle button for small screens -->
+                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                            aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+
+                        <div class="sidebar-logo mb-1 me-5">
+                            <img src="./assets/icons/TCC..jpg" alt="Logo">
+                        </div>
+                        <!-- Navbar items (collapse on small screens) -->
+                        <div class="collapse navbar-collapse" id="navbarNav">
+                            <!-- Add Team Member -->
+                            <div>
+                                <h5 class="d-none d-lg-block ms-5">Add Team Member</h5>
+                                <small class="text-muted ms-5">
+                                    Team Member > Team Members > Add Team Member
+                                </small>
+                            </div>
+                            <ul class="navbar-nav ms-auto">
+                                <!-- Language And Country  -->
+                                <li class="nav-item dropdown me-3">
+                                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                                        <img src="./assets/icons/flag.png" alt="" height="20" width="20"> Hindi (IND)
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#"><img
+                                                    src="./assets/icons/british-columbia.jpg.png" height="20"
+                                                    width="20"> English (British-Columbia) </a></li>
+                                        <li><a class="dropdown-item" href="#"><img
+                                                    src="./assets/icons/australia.jpg.png" height="20" width="20">
+                                                Spanish (Australia)</a></li>
+                                        <li><a class="dropdown-item" href="#"><img src="./assets/icons/japan.jpg.png"
+                                                    height="20" width="20">
+                                                English (Japan)</a></li>
+                                        <li><a class="dropdown-item" href="#"><img
+                                                    src="./assets/icons/new-zealand.jpg.png" height="20" width="20">
+                                                Spanish (New-Zealand)</a></li>
+                                    </ul>
+                                </li>
+
+                                <!-- Notifications Icon -->
+                                <li class="nav-item mt-2 me-3">
+                                    <i class="bi bi-bell"></i>
+                                </li>
+
+                                <!-- Settings Icon -->
+                                <li class="nav-item mt-2 me-3">
+                                    <i class="bi bi-gear"></i>
+                                </li>
+
+                                <!-- User Profile  -->
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link dropdown-toggle d-flex align-items-center" href="#"
+                                        data-bs-toggle="dropdown">
+                                        <img src="./assets/icons/image.jpg" width="28" height="28"
+                                            class="rounded-circle me-2" alt="Admin">
+                                        <span class="d-none d-md-inline">Ales Lee</span>
+                                    </a>
+                                    <ul class="dropdown-menu">
+                                        <li><a class="dropdown-item" href="#">Profile</a></li>
+                                        <li><a class="dropdown-item" href="#">Logout</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+        </div>
+        <!-- Web Page Content -->
+        <div class="main-content">
+            <!-- Sidebar Toggle Button for Mobile -->
+            <button class="btn btn-primary m-3 d-md-none" id="sidebarToggle">☰ Open Sidebar</button>
+            <div class="container-fluid mb-2 mt-5">
+                <div class="card">
+                    <div class="card-body">
+                        <!-- Add Team Memeber -->
+                        <div class="row align-items-center">
+                            <div class="col-md-10 col-12">
+                                <h4>Add Team Member</h4>
+                                <p class="text-muted">Add Team Member to Organization.</p>
+                            </div>
+                            <div
+                                class="col-md-2 col-12 d-md-flex align-items-center justify-content-md-end justify-content-center">
+                                <div class="btn-container d-flex gap-2">
+                                    <button class="btn btn-danger w-sm-100 w-md-auto">Cancel</button>
+                                    <button class="btn btn-primary w-sm-100 w-md-auto">Save</button>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- form -->
+                        <div class="row ">
+                            <div class="row align-items-center">
+                                <!-- Profile Image -->
+                                <div class="col-md-4 col-sm-12 text-center mb-3">
+                                    <img src="./assets/icons/image.jpg" alt="Profile Image"
+                                        class="profile-img img-fluid mx-auto d-block" style="max-width: 150px;">
+                                </div>
+
+                                <!-- Name and Email Section -->
+                                <div class="col-md-8">
+                                    <div class="row">
+                                        <div class="col-md-6 col-sm-12 mb-3">
+                                            <label class="form-label">First Name *</label>
+                                            <input type="text" class="form-control" placeholder="Enter first name">
+                                        </div>
+                                        <div class="col-md-6 col-sm-12 mb-3">
+                                            <label class="form-label">Last Name *</label>
+                                            <input type="text" class="form-control" placeholder="Enter last name">
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 mb-3">
+                                            <label class="form-label">Email *</label>
+                                            <input type="email" class="form-control" placeholder="example@mail.com">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Row-1 -->
+                            <div class="row">
+                                <!-- Team Member Id -->
+                                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                                    <label class="form-label">Team Member Id</label>
+                                    <input type="text" class="form-control" placeholder="Enter ID">
+                                </div>
+
+                                <!-- Designation -->
+                                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                                    <label class="form-label">Designation</label>
+                                    <select class="form-select">
+                                        <option selected>Select Designation</option>
+                                        <option value="1">Software Developer</option>
+                                        <option value="2">Front-End Developer</option>
+                                        <option value="3">Back-End Developer</option>
+                                        <option value="4">UI/UX Designer</option>
+                                        <option value="5">Full Stack Developer</option>
+                                    </select>
+                                </div>
+
+                                <!-- Role -->
+                                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                                    <label class="form-label">Role</label>
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-secondary w-100 text-start" type="button"
+                                            id="dropdownCheckbox" data-bs-toggle="dropdown">
+                                            Select Role
+                                        </button>
+                                        <ul class="dropdown-menu w-100 p-2">
+                                            <li><label class="dropdown-item"><input class="form-check-input me-2"
+                                                        type="checkbox"> Mentor</label></li>
+                                            <li><label class="dropdown-item"><input class="form-check-input me-2"
+                                                        type="checkbox"> Training Team</label></li>
+                                            <li><label class="dropdown-item"><input class="form-check-input me-2"
+                                                        type="checkbox"> Operations Team</label></li>
+                                            <li><label class="dropdown-item"><input class="form-check-input me-2"
+                                                        type="checkbox"> Sales Team</label></li>
+                                            <li><label class="dropdown-item"><input class="form-check-input me-2"
+                                                        type="checkbox"> Admin</label></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Department -->
+                                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                                    <label class="form-label">Department</label>
+                                    <select class="form-select">
+                                        <option selected>Select Department</option>
+                                        <option value="1">Front-end Development</option>
+                                        <option value="2">Creative Design Team</option>
+                                        <option value="3">Software Development</option>
+                                        <option value="4">Full Stack Development</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Row-2 -->
+                            <div class="row">
+                                <!-- Reporting Manager -->
+                                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                                    <label class="form-label">Reporting Manager</label>
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-secondary w-100 text-start" type="button"
+                                            id="dropdownMenuButton" data-bs-toggle="dropdown">
+                                            Select Reporting Manager
+                                        </button>
+                                        <ul class="dropdown-menu w-100">
+                                            <li><a class="dropdown-item d-flex align-items-center" href="#">
+                                                    <img src="https://randomuser.me/api/portraits/men/1.jpg"
+                                                        class="rounded-circle me-2" width="30" height="30"> Ales Johnson
+                                                </a></li>
+                                            <li><a class="dropdown-item d-flex align-items-center" href="#">
+                                                    <img src="https://randomuser.me/api/portraits/women/2.jpg"
+                                                        class="rounded-circle me-2" width="30" height="30"> Carolyn
+                                                    McDonald
+                                                </a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Joining Date -->
+                                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                                    <label for="datePicker" class="form-label">Joining Date</label>
+                                    <input type="date" id="datePicker" class="form-control">
+                                </div>
+
+                                <!-- Billing Status -->
+                                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                                    <label class="form-label">Billing Status</label>
+                                    <select class="form-select">
+                                        <option selected>Select Billing Status</option>
+                                        <option value="1">● Billable</option>
+                                        <option value="2">● Non-Billable</option>
+                                        <option value="3">● Partly Billable</option>
+                                    </select>
+                                </div>
+
+                                <!-- Availability Status -->
+                                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                                    <label class="form-label">Availability Status</label>
+                                    <select class="form-select">
+                                        <option selected>Select Availability Status</option>
+                                        <option value="1">Available</option>
+                                        <option value="2">Non-Available</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <!-- Row-3 -->
+                            <div class="row">
+                                <!-- Total Experience -->
+                                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                                    <label class="form-label">Total Experience</label>
+                                    <div class="row gx-2">
+                                        <!-- Years -->
+                                        <div class="col-6">
+                                            <select class="form-select">
+                                                <option selected>Year</option>
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                            </select>
+                                        </div>
+                                        <!-- Months -->
+                                        <div class="col-6">
+                                            <select class="form-select">
+                                                <option selected>Month</option>
+                                                <option value="0">0</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- Cluster -->
+                                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                                    <label class="form-label">Cluster</label>
+                                    <select class="form-select">
+                                        <option selected>Select Cluster</option>
+                                        <option value="1">Delivery</option>
+                                        <option value="2">Deployment</option>
+                                    </select>
+                                </div>
+
+                                <!-- Available From -->
+                                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                                    <label for="datePicker" class="form-label">Available From</label>
+                                    <input type="date" id="datePicker" class="form-control">
+                                </div>
+
+                                <!-- Tags -->
+                                <div class="col-lg-3 col-md-6 col-sm-12 mb-3">
+                                    <label class="form-label">Tags</label>
+                                    <div class="dropdown">
+                                        <button class="btn btn-outline-secondary w-100 text-start" type="button"
+                                            id="dropdownCheckbox" data-bs-toggle="dropdown">
+                                            Select Tags
+                                        </button>
+                                        <ul class="dropdown-menu w-100 p-2">
+                                            <li><label class="dropdown-item"><input class="form-check-input me-2"
+                                                        type="checkbox"> Available</label></li>
+                                            <li><label class="dropdown-item"><input class="form-check-input me-2"
+                                                        type="checkbox"> Not Available</label></li>
+                                            <li><label class="dropdown-item"><input class="form-check-input me-2"
+                                                        type="checkbox"> Replacement</label></li>
+                                            <li><label class="dropdown-item"><input class="form-check-input me-2"
+                                                        type="checkbox"> Resigned</label></li>
+                                            <li><label class="dropdown-item"><input class="form-check-input me-2"
+                                                        type="checkbox"> Shadow</label></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Row-4 -->
+                            <div class="row">
+                                <!-- Bio -->
+                                <div class="col-lg-12 p-1">
+                                    <div class="mt-3">
+                                        <label class="form-label">Bio</label>
+                                        <!-- Editor Container -->
+                                        <div id="editor-container"></div>
+                                    </div>
+                                </div>
+                                <!-- Upload CV -->
+                                <div class="col-md-6 col-md-12 p-1 ps-lg-4">
+                                    <label class="form-label ">Upload CV </label>
+                                </div>
+                                <div class="position-relative text-end">
+                                    <textarea class="form-control pe-5" id="cvUplosdText" row="2"
+                                        placeholder="Drag and Drop file here or Choose file to uploed"
+                                        readonly></textarea>
+                                    <input type="file" id="cvUpload" class="d-none" />
+                                    <button
+                                        class="btn btn-primary btn-sm position-absolute top-50 end-0 translate-middle-y me-4 m-0"
+                                        onclick="document.getElementById('cvUpload').click();">
+                                        <i class="fa-solid fa-upload"></i> Upload CV
+                                    </button>
+                                </div>
+                                <div class="container p-3">
+                                    <div class="label-with-line">
+                                        <div class="label-line"></div>
+                                        <label for="inputField" class="form-label">Add Skill Sets</label>
+                                    </div>
+                                </div>
+                                <!-- Skill Sets -->
+                                <div class="col-md-2 mb-3">
+                                    <label class="form-label">Skill Sets</label>
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-12 col-md-6"> <!-- Adjust as needed -->
+                                                <div class="dropdown">
+                                                    <button
+                                                        class="btn btn-outline-secontry p-2  text-start me-4 w-100 dropdown-toggle"
+                                                        type="button" id="dropdownCheckbox" data-bs-toggle="dropdown"
+                                                        aria-expanded="false">
+                                                        Select Skill Sets
+                                                    </button>
+                                                    <ul class="dropdown-menu w-100 p-2"
+                                                        aria-labelledby="dropdownCheckbox">
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input class="form-check-input me-2" type="checkbox"
+                                                                    value="1"> HTML
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input class="form-check-input me-2" type="checkbox"
+                                                                    value="2"> DotNet
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input class="form-check-input me-2" type="checkbox"
+                                                                    value="3"> CSS
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input class="form-check-input me-2" type="checkbox"
+                                                                    value="4"> JavaScript
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input class="form-check-input me-2" type="checkbox"
+                                                                    value="5"> Bootstrap
+                                                            </label>
+                                                        </li>
+                                                        <li>
+                                                            <label class="dropdown-item">
+                                                                <input class="form-check-input me-2" type="checkbox"
+                                                                    value="6"> CSS5
+                                                            </label>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Skill Rows -->
+                                <div class="skills-box">
+                                    <div class="row  mb-2">
+                                        <label class="p-1"></label>
+                                    </div>
+                                    <div class="row align-items-center pb-3">
+                                        <div class="col-lg-2 col-md-4 fw-bold text-center">HTML</div>
+
+                                        <div class="col-lg-2 col-md-4">
+                                            <label class="p-1">Level</label>
+                                            <select class="form-select">
+                                                <option>Select Experience</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="col-lg-3 col-md-4">
+                                            <label class="p-1">Experience Required</label>
+                                            <div class="row">
+                                                <div class="col-6">
+                                                    <select class="form-select">
+                                                        <option>Year</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-6">
+                                                    <select class="form-select">
+                                                        <option>Month</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-2 col-md-4">
+                                            <label>Assessed By</label>
+                                            <div class="dropdown">
+                                                <button class="btn btn-outline-secondary w-100 text-start" type="button"
+                                                    id="dropdownCheckbox" data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                    Select Assessed By
+                                                </button>
+                                                <ul class="dropdown-menu p-2" aria-labelledby="dropdownCheckbox">
+                                                    <li><label class="dropdown-item"><input
+                                                                class="form-check-input me-2" type="checkbox"
+                                                                value="1"><img
+                                                                src="https://randomuser.me/api/portraits/men/1.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30">
+                                                            Ales</label></li>
+                                                    <li><label class="dropdown-item"><input
+                                                                class="form-check-input me-2" type="checkbox"
+                                                                value="2"><img
+                                                                src="https://randomuser.me/api/portraits/women/2.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30">
+                                                            Carolyn</label></li>
+                                                    <li><label class="dropdown-item"><input
+                                                                class="form-check-input me-2" type="checkbox"
+                                                                value="3"><img
+                                                                src="https://randomuser.me/api/portraits/men/3.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30">
+                                                            Steve</label></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-2 col-md-4">
+                                            <label class="p-1">Assessed On</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+
+                                        <div class="col-lg-1 col-md-4 text-center">
+                                            <i class="fa fa-trash trash-icon"></i>
+                                        </div>
+                                    </div>
+                                    <!-- Skill Row-2 -->
+                                    <div class="row align-items-center pb-3">
+                                        <div class="col-lg-2 pb-3 col-md-2 fw-bold text-center">DotNet</div>
+                                        <div class="col-lg-2 pb-3 col-md-2">
+                                            <label class="p-1">Level</label>
+                                            <select class="form-select">
+                                                <option>Select Experience</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-3 pb-3">
+                                            <label class="p-1">Experience Required</label>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <select class="form-select me-1">
+                                                        <option>Year</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <select class="form-select">
+                                                        <option>Month</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- Assessed By -->
+                                        <div class="col-lg-2 pb-3 col-md-2">
+                                            <label for="">Assessed By</label>
+                                            <div class="dropdown">
+                                                <button class="btn btn-outline-secondary  w-100 text-start"
+                                                    type="button" id="dropdownCheckbox" data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                    Select Assessed By
+                                                </button>
+                                                <ul class="dropdown-menu w-100 p-2" aria-labelledby="dropdownCheckbox">
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="1">
+                                                            <img src="https://randomuser.me/api/portraits/men/1.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="Ales Johnson">
+                                                            Ales
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="2">
+                                                            <img src="https://randomuser.me/api/portraits/women/2.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="Carolyn McDonald">
+                                                            Carolyn
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="3">
+                                                            <img src="https://randomuser.me/api/portraits/men/3.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="Steve Pearson">
+                                                            Steve
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="4">
+                                                            <img src="https://randomuser.me/api/portraits/men/4.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="Alex Johnson">
+                                                            Alex
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="5">
+                                                            <img src="https://randomuser.me/api/portraits/women/5.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="Jasmine Lee">
+                                                            Jasmine
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="6"><img
+                                                                src="https://randomuser.me/api/portraits/men/6.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="David Lee">
+                                                            David
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-2 pb-3 col-md-2">
+                                            <label class="p-1">Assessed On</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="col-lg-1 pb-3 col-md-4 text-center">
+                                            <i class="fa fa-trash trash-icon"></i>
+                                        </div>
+                                    </div>
+                                    <!-- Skill Row-3 -->
+                                    <div class="row align-items-center pb-3">
+                                        <div class="col-lg-2 pb-3 col-md-2 fw-bold text-center">CSS</div>
+                                        <div class="col-lg-2 pb-3 col-md-2">
+                                            <label class="p-1">Level</label>
+                                            <select class="form-select">
+                                                <option>Select Experience</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-3 pb-3">
+                                            <label class="p-1">Experience Required</label>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <select class="form-select me-1">
+                                                        <option>Year</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <select class="form-select">
+                                                        <option>Month</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <!-- Assessed By -->
+                                        <div class="col-lg-2 pb-3 col-md-2">
+                                            <label for="">Assessed By</label>
+                                            <div class="dropdown">
+                                                <button class="btn btn-outline-secondary  w-100 text-start"
+                                                    type="button" id="dropdownCheckbox" data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                    Select Assessed By
+                                                </button>
+                                                <ul class="dropdown-menu w-100 p-2" aria-labelledby="dropdownCheckbox">
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="1">
+                                                            <img src="https://randomuser.me/api/portraits/men/1.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="Ales Johnson">
+                                                            Ales
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="2">
+                                                            <img src="https://randomuser.me/api/portraits/women/2.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="Carolyn McDonald">
+                                                            Carolyn
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="3">
+                                                            <img src="https://randomuser.me/api/portraits/men/3.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="Steve Pearson">
+                                                            Steve
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="4">
+                                                            <img src="https://randomuser.me/api/portraits/men/4.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="Alex Johnson">
+                                                            Alex
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="5">
+                                                            <img src="https://randomuser.me/api/portraits/women/5.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="Jasmine Lee">
+                                                            Jasmine
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="6"><img
+                                                                src="https://randomuser.me/api/portraits/men/6.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="David Lee">
+                                                            David
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-2 pb-3 col-md-2">
+                                            <label class="p-1">Assessed On</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="col-lg-1 pb-3 col-md-4 text-center">
+                                            <i class="fa fa-trash trash-icon"></i>
+                                        </div>
+                                    </div>
+                                    <!-- Skill Row-4 -->
+                                    <div class="row align-items-center pb-3">
+                                        <div class="col-lg-2 pb-3 col-md-2 fw-bold text-center">Bootstrap</div>
+                                        <div class="col-lg-2 pb-3 col-md-2">
+                                            <label class="p-1">Level</label>
+                                            <select class="form-select">
+                                                <option>Select Experience</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-3 pb-3">
+                                            <label class="p-1">Experience Required</label>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <select class="form-select me-1">
+                                                        <option>Year</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <select class="form-select">
+                                                        <option>Month</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                        </div>
+
+                                        <!-- Assessed By -->
+                                        <div class="col-lg-2 pb-3 col-md-2">
+                                            <label for="">Assessed By</label>
+                                            <div class="dropdown">
+                                                <button class="btn btn-outline-secondary  w-100 text-start"
+                                                    type="button" id="dropdownCheckbox" data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                    Select Assessed By
+                                                </button>
+                                                <ul class="dropdown-menu w-100 p-2" aria-labelledby="dropdownCheckbox">
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="1">
+                                                            <img src="https://randomuser.me/api/portraits/men/1.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="Ales Johnson">
+                                                            Ales
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="2">
+                                                            <img src="https://randomuser.me/api/portraits/women/2.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="Carolyn McDonald">
+                                                            Carolyn
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="3">
+                                                            <img src="https://randomuser.me/api/portraits/men/3.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="Steve Pearson">
+                                                            Steve
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="4">
+                                                            <img src="https://randomuser.me/api/portraits/men/4.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="Alex Johnson">
+                                                            Alex
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="5">
+                                                            <img src="https://randomuser.me/api/portraits/women/5.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="Jasmine Lee">
+                                                            Jasmine
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="6"><img
+                                                                src="https://randomuser.me/api/portraits/men/6.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="David Lee">
+                                                            David
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-lg-2 pb-3 col-md-2">
+                                            <label class="p-1">Assessed On</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="col-lg-1 pb-3 col-md-4 text-center">
+                                            <i class="fa fa-trash trash-icon"></i>
+                                        </div>
+                                    </div>
+                                    <!--Skill Row-4  -->
+                                    <div class="row align-items-center pb-3">
+                                        <div class="col-lg-2 pb-3 col-md-2 fw-bold text-center">JavaScript</div>
+                                        <div class="col-lg-2 pb-3 col-md-2">
+                                            <label class="p-1">Level</label>
+                                            <select class="form-select">
+                                                <option>Select Experience</option>
+                                                <option>1</option>
+                                                <option>2</option>
+                                                <option>3</option>
+                                                <option>4</option>
+                                                <option>5</option>
+                                                <option>6</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-lg-3 pb-3">
+                                            <label class="p-1">Experience Required</label>
+                                            <div class="row">
+                                                <div class="col-lg-6">
+                                                    <select class="form-select me-1">
+                                                        <option>Year</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                    </select>
+                                                </div>
+                                                <div class="col-lg-6">
+                                                    <select class="form-select">
+                                                        <option>Month</option>
+                                                        <option>1</option>
+                                                        <option>2</option>
+                                                        <option>3</option>
+                                                        <option>4</option>
+                                                        <option>5</option>
+                                                        <option>6</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- Assessed By -->
+                                        <div class="col-lg-2 pb-3 col-md-2">
+                                            <label for="">Assessed By</label>
+                                            <div class="dropdown">
+                                                <button class="btn btn-outline-secondary  w-100 text-start"
+                                                    type="button" id="dropdownCheckbox" data-bs-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                    Select Assessed By
+                                                </button>
+                                                <ul class="dropdown-menu w-100 p-2" aria-labelledby="dropdownCheckbox">
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="1">
+                                                            <img src="https://randomuser.me/api/portraits/men/1.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="Ales Johnson">
+                                                            Ales
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="2">
+                                                            <img src="https://randomuser.me/api/portraits/women/2.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="Carolyn McDonald">
+                                                            Carolyn
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="3">
+                                                            <img src="https://randomuser.me/api/portraits/men/3.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="Steve Pearson">
+                                                            Steve
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="4">
+                                                            <img src="https://randomuser.me/api/portraits/men/4.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="Alex Johnson">
+                                                            Alex
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="5">
+                                                            <img src="https://randomuser.me/api/portraits/women/5.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="Jasmine Lee">
+                                                            Jasmine
+                                                        </label>
+                                                    </li>
+                                                    <li>
+                                                        <label class="dropdown-item">
+                                                            <input class="form-check-input me-2" type="checkbox"
+                                                                value="6"><img
+                                                                src="https://randomuser.me/api/portraits/men/6.jpg"
+                                                                class="rounded-circle me-2" width="30" height="30"
+                                                                alt="David Lee">
+                                                            David
+                                                        </label>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 pb-3 col-md-2">
+                                            <label class="p-1">Assessed On</label>
+                                            <input type="date" class="form-control">
+                                        </div>
+                                        <div class="col-lg-1 pb-3 col-md-4 text-center">
+                                            <i class="fa fa-trash trash-icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const sidebar = document.getElementById("sidebar");
+            const sidebarToggle = document.getElementById("sidebarToggle");
+            const closeSidebar = document.getElementById("closeSidebar");
+
+            sidebarToggle.addEventListener("click", function () {
+                sidebar.classList.toggle("active");
+            });
+
+            closeSidebar.addEventListener("click", function () {
+                sidebar.classList.remove("active");
+            });
+
+            // Optional: Close sidebar if user clicks outside (mobile)
+            document.addEventListener("click", function (event) {
+                if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
+                    sidebar.classList.remove("active");
+                }
+            });
+        });
+
+
+        // quill 
+        document.addEventListener("DOMContentLoaded", function () {
+            var quill = new Quill('#editor-container', {
+                theme: 'snow',
+                placeholder: 'Write your bio...',
+                modules: {
+                    toolbar: [
+                        ['bold', 'italic', 'underline'],
+                        [{ 'list': 'ordered' }, { 'list': 'bullet' }],
+                        ['link']
+                    ]
+                }
+            });
+        });
+
+        //skill set
+        document.addEventListener("DOMContentLoaded", function () {
+            var dropdownElement = document.getElementById("dropdownCheckbox");
+            new bootstrap.Dropdown(dropdownElement);
+        });
+
+
+
+    </script>
+</body>
+
+</html>

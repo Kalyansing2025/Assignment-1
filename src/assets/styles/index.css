@@ -1,0 +1,674 @@
+
+
+/* Responsive Behavior */
+@media (max-width: 768px) {
+
+  /* Navbar takes full width */
+  .navbar {
+    left: 0;
+    width: 100%;
+  }
+
+  /* Show Sidebar Toggle on Small Screens */
+  .sidebar-toggle {
+    display: block;
+  }
+
+  /* Navbar Collapse */
+  .navbar-collapse {
+    background: white;
+    position: absolute;
+    top: 55px;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    display: none;
+    padding: 10px;
+  }
+
+  .navbar-collapse.show {
+    display: block;
+  }
+}
+
+
+
+/* Sidebar Styling */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 50px;
+  left: 0;
+  background: white;
+  box-shadow: 0px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease-in-out;
+  margin-top: 150px;
+  padding-top: 20px;
+}
+
+/* Show sidebar when active */
+.sidebar.active {
+  left: 0;
+}
+
+/* Sidebar toggle button */
+#sidebarToggle {
+  display: block;
+}
+
+/* Sidebar Links */
+.sidebar a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  border-radius: 0px;
+  transition: 0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: #eef2ff;
+  color: #0056b3;
+}
+
+.sidebar i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+/* Close button inside sidebar */
+.close-btn {
+  display: none;
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* Show close button only on small screens */
+@media (max-width: 450px) {
+  .close-btn {
+      display: block;
+  }
+}
+
+/* Navbar Styling */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0px;
+  width: 100%;
+  height: 55px;
+  background: white;
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  justify-content: space-between; /* Space out items */
+  transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
+  padding: 0 20px;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  .navbar {
+    left: 0;
+    width: 100%;
+  }
+}
+
+/* Navbar Toggle Button (For Mobile Sidebar) */
+.navbar-toggler {
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  background: #28a745;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+}
+
+
+
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 10px auto; /* Adds spacing */
+  position: relative;
+}
+
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.form-group input,
+.form-group select {
+  flex: 1;
+  min-width: 180px;
+}
+
+@media (max-width: 768px) {
+  .form-group {
+      flex-direction: column;
+      gap: 10px;
+  }
+}
+
+
+
+
+.billing-status option[value="1"] {
+  color: green;
+  font-weight: bold;
+}
+
+.billing-status option[value="2"] {
+  color: pink;
+  font-weight: bold;
+}
+
+.billing-status option[value="3"] {
+  color: gold;
+  font-weight: bold;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+}
+
+.editor {
+  min-height: 200px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 5px;
+  background: #fff;
+}
+
+.file-input {
+  display: none;
+}
+
+.label-with-line {
+  display: flex;
+  align-items: center;
+}
+
+.label-with-line::after {
+  content: "";
+  flex-grow: 1;
+  height: 1px;
+  background-color: #000000;
+  /* Customize the color */
+  margin-right: 10px;
+  /* Adjust the space between the label and the line */
+}
+
+.label-with-line label {
+  margin-right: 10px;
+  /* Adjust the space between the line and label */
+}
+
+.card {
+  margin-top: 25px;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  /* Prevent full-page scrolling */
+}
+
+.content {
+  position: fixed;
+  top: 60px;
+  /* Adjust according to navbar height */
+  left: 262px;
+  
+
+/* Responsive Behavior */
+@media (max-width: 768px) {
+
+  /* Navbar takes full width */
+  .navbar {
+    left: 0;
+    width: 100%;
+  }
+
+  /* Show Sidebar Toggle on Small Screens */
+  .sidebar-toggle {
+    display: block;
+  }
+
+  /* Navbar Collapse */
+  .navbar-collapse {
+    background: white;
+    position: absolute;
+    top: 55px;
+    right: 0;
+    width: 100%;
+    z-index: 1000;
+    display: none;
+    padding: 10px;
+  }
+
+  .navbar-collapse.show {
+    display: block;
+  }
+}
+
+
+/* Sidebar Styling */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: white;
+  box-shadow: 0px 0 5px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  transition: transform 0.3s ease-in-out;
+  margin-top: 150px;
+  padding-top: 20px;
+}
+
+/* Show sidebar when active */
+.sidebar.active {
+  left: 0;
+}
+
+/* Sidebar toggle button */
+#sidebarToggle {
+  display: block;
+}
+
+/* Sidebar Links */
+.sidebar a {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  color: #333;
+  padding: 10px;
+  border-radius: 0px;
+  transition: 0.3s;
+}
+
+.sidebar a:hover,
+.sidebar a.active {
+  background-color: #eef2ff;
+  color: #0056b3;
+}
+
+.sidebar i {
+  margin-right: 10px;
+  font-size: 18px;
+}
+
+/* Close button inside sidebar */
+.close-btn {
+  display: none;
+  background: red;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+}
+
+/* Show close button only on small screens */
+@media (max-width: 450px) {
+  .close-btn {
+      display: block;
+  }
+}
+
+/* Navbar Styling */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 250px;
+  width: calc(100% - 250px);
+  height: 55px;
+  background: white;
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid #ddd;
+  transition: left 0.3s ease-in-out, width 0.3s ease-in-out;
+  padding: 0 20px;
+}
+
+/* Responsive Navbar */
+@media (max-width: 768px) {
+  .navbar {
+    left: 0;
+    width: 100%;
+  }
+}
+
+/* Navbar Toggle Button (For Mobile Sidebar) */
+.navbar-toggler {
+  position: absolute;
+  top: 30px;
+  right: 10px;
+  background: #28a745;
+  color: white;
+  padding: 8px 12px;
+  border-radius: 5px;
+  border: none;
+}
+
+
+
+.profile-img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+  margin: 10px auto; /* Adds spacing */
+  position: relative;
+}
+
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.form-group input,
+.form-group select {
+  flex: 1;
+  min-width: 180px;
+}
+
+@media (max-width: 768px) {
+  .form-group {
+      flex-direction: column;
+      gap: 10px;
+  }
+}
+
+
+
+
+.billing-status option[value="1"] {
+  color: green;
+  font-weight: bold;
+}
+
+.billing-status option[value="2"] {
+  color: pink;
+  font-weight: bold;
+}
+
+.billing-status option[value="3"] {
+  color: gold;
+  font-weight: bold;
+}
+
+.toolbar {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+}
+
+.editor {
+  min-height: 200px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-top: 5px;
+  background: #fff;
+}
+
+.file-input {
+  display: none;
+}
+
+.label-with-line {
+  display: flex;
+  align-items: center;
+}
+
+.label-with-line::after {
+  content: "";
+  flex-grow: 1;
+  height: 1px;
+  background-color: #000000;
+  /* Customize the color */
+  margin-right: 10px;
+  /* Adjust the space between the label and the line */
+}
+
+.label-with-line label {
+  margin-right: 10px;
+  /* Adjust the space between the line and label */
+}
+
+.card {
+  margin-top: 25px;
+}
+
+body,
+html {
+  height: 100%;
+  margin: 0;
+  overflow: hidden;
+  /* Prevent full-page scrolling */
+}
+
+.content {
+  position: fixed;
+  top: 60px;
+  /* Adjust according to navbar height */
+  left: 262px;
+  /* Adjust according to sidebar width */
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  overflow-y: auto;
+  /* Enable vertical scrolling */
+  background: #f8f9fa;
+}
+.main-content {
+  position: absolute;
+  top: 65px; /* Below Navbar */
+  left: 260px; /* Adjust for Sidebar */
+  right: 10px; /* Maintain right margin */
+  bottom: 10px; /* Maintain bottom margin */
+  padding: 10px;
+  overflow-y: auto; /* Scroll if content overflows */
+  transition: left 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%); /* Hide sidebar */
+    position: fixed;
+    z-index: 1050;
+  }
+
+  .sidebar.active {
+    transform: translateX(0); /* Show sidebar when active */
+  }
+
+  .navbar {
+    left: 0;
+    width: 100%;
+  }
+
+  .main-content {
+    left: 0;
+    width: 100%;
+  }
+}
+
+
+/* Card Styling */
+.card {
+  width: 100%;
+  margin: 10px 0;
+  /* Spacing between cards */
+  box-shadow: 0px 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 15px;
+  background: white;
+}
+
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.form-group input,
+.form-group select {
+  flex: 1;
+  min-width: 150px;
+}
+
+@media (max-width: 768px) {
+  .form-group {
+    flex-direction: column;
+  }
+}
+  /* Adjust according to sidebar width */
+  right: 0;
+  bottom: 0;
+  padding: 20px;
+  overflow-y: auto;
+  /* Enable vertical scrolling */
+  background: #f8f9fa;
+}
+.form-select,
+.form-control {
+  font-size: 14px;
+  padding: 5px;
+}
+
+/* Tablet Specific Adjustments (1200px - 768px) */
+    @media (max-width: 1200px) {
+        .row {
+            flex-wrap: wrap; /* Prevents overflow and ensures proper wrapping */
+        }
+        
+        .col-lg-2, .col-lg-3 {
+            flex: 0 0 100%; /* Makes elements full width on tablets */
+            max-width: 100%;
+        }
+
+        .dropdown-menu {
+            width: auto !important;
+            min-width: 250px;
+        }
+
+        .dropdown-item {
+            display: flex;
+            align-items: center;
+            font-size: 14px; /* Slightly smaller text */
+            padding: 8px 12px;
+        }
+
+        .dropdown-item img {
+            width: 25px;
+            height: 25px;
+        }
+
+        .dropdown-item input {
+            margin-right: 10px;
+        }
+    }
+
+    .trash-icon:hover {
+      color: red;
+    }
+    
+.main-content {
+  position: absolute;
+  top: 65px; /* Below Navbar */
+  left: 260px; /* Adjust for Sidebar */
+  right: 10px; /* Maintain right margin */
+  bottom: 10px; /* Maintain bottom margin */
+  padding: 10px;
+  overflow-y: auto; /* Scroll if content overflows */
+  transition: left 0.3s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%); /* Hide sidebar */
+    position: fixed;
+    z-index: 1050;
+  }
+
+  .sidebar.active {
+    transform: translateX(0); /* Show sidebar when active */
+  }
+
+  .navbar {
+    left: 0;
+    width: 100%;
+  }
+
+  .main-content {
+    left: 0;
+    width: 100%;
+  }
+}
+
+
+
+/* Card Styling */
+.card {
+  width: 100%;
+  margin: 10px 0;
+  /* Spacing between cards */
+  box-shadow: 0px 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  padding: 15px;
+  background: white;
+}
+
+.form-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.form-group input,
+.form-group select {
+  flex: 1;
+  min-width: 150px;
+}
+
+@media (max-width: 768px) {
+  .form-group {
+    flex-direction: column;
+  }
+}
